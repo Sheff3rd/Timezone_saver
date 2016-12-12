@@ -1,0 +1,16 @@
+<h1> New clock </h1>
+
+<%= form_for @clock do |f| %>
+  <%= f.label :time %>
+  <%= f.time_field :time %>
+  <%= f.number_field :timezone, in: -12..12 %>
+  <%= f.submit %>
+<% end %>
+
+<h1> Clocks: </h1>
+<ul>
+  <% @clocks.each do |clock| %>
+    <li> <%= clock.time %> </li>
+    <%= link_to 'time zones', clock_path(clock.id) %>
+  <% end %>
+</ul>
